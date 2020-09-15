@@ -1,9 +1,9 @@
 ﻿namespace CarRentalSystem.Web.Features
 {
     using System.Threading.Tasks;
-    using Application.Features;
-    using Application.Features.Dealers.Commands.Edit;
-    using Application.Features.Dealers.Queries.Details;
+    using Application.Common;
+    using Application.Dealerships.Dealers.Commands.Edit;
+    using Application.Dealerships.Dealers.Queries.Details;
     using Microsoft.AspNetCore.Mvc;
 
     public class DealersController : ApiController

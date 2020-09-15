@@ -1,6 +1,6 @@
 ﻿namespace CarRentalSystem.Startup
 {
-    using Infrastructure;
+    using Infrastructure.Common;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.Extensions.DependencyInjection;
 

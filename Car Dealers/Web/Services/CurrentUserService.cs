@@ -2,7 +2,7 @@
 {
     using System;
     using System.Security.Claims;
-    using Application.Contracts;
+    using Application.Common.Contracts;
     using Microsoft.AspNetCore.Http;
 
     public class CurrentUserService : ICurrentUser

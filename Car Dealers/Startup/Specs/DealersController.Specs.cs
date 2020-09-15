@@ -1,6 +1,6 @@
 ﻿namespace CarRentalSystem.Startup.Specs
 {
-    using Application.Features.Dealers.Queries.Details;
+    using Application.Dealerships.Dealers.Queries.Details;
     using MyTested.AspNetCore.Mvc;
     using Web;
     using Web.Features;

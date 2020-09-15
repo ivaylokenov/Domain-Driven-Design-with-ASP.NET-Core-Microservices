@@ -4,6 +4,7 @@
     using System.Threading.Tasks;
     using Application.Common.Interfaces;
     using Application.Common.Models;
+    using CarRentalSystem.Application.Common;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
 

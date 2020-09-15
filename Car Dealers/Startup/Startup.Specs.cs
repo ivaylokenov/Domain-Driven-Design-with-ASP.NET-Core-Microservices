@@ -1,7 +1,7 @@
 ﻿namespace CarRentalSystem.Startup
 {
-    using Application.Features.CarAds;
-    using Domain.Factories.CarAds;
+    using Application.Dealerships.CarAds;
+    using Domain.Dealerships.Factories.CarAds;
     using Infrastructure.Identity;
     using MediatR;
     using Microsoft.AspNetCore.Identity;

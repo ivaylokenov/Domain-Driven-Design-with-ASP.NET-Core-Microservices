@@ -1,8 +1,8 @@
 ﻿namespace CarRentalSystem.Infrastructure.Identity
 {
-    using Application.Features.Identity;
-    using Domain.Exceptions;
-    using Domain.Models.Dealers;
+    using Application.Identity;
+    using Domain.Dealerships.Exceptions;
+    using Domain.Dealerships.Models.Dealers;
     using Microsoft.AspNetCore.Identity;
 
     public class User : IdentityUser, IUser

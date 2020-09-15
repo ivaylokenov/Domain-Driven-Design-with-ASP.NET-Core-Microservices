@@ -8,7 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectCapability Include="DynamicFileNesting"/>
+    <Compile Remove="Common\Persistence\Migrations\20200915172440_StatisticsTables.cs" />
+    <Compile Remove="Common\Persistence\Migrations\20200915172440_StatisticsTables.Designer.cs" />
+    <Compile Remove="Common\Persistence\Migrations\20200915172749_StatisticsTables.cs" />
+    <Compile Remove="Common\Persistence\Migrations\20200915172749_StatisticsTables.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectCapability Include="DynamicFileNesting" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)' == 'Release'">

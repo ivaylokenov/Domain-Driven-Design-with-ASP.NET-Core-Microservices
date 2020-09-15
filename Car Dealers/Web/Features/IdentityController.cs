@@ -1,9 +1,9 @@
 ﻿namespace CarRentalSystem.Web.Features
 {
     using System.Threading.Tasks;
-    using Application.Features.Identity.Commands.ChangePassword;
-    using Application.Features.Identity.Commands.CreateUser;
-    using Application.Features.Identity.Commands.LoginUser;
+    using Application.Identity.Commands.ChangePassword;
+    using Application.Identity.Commands.CreateUser;
+    using Application.Identity.Commands.LoginUser;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 

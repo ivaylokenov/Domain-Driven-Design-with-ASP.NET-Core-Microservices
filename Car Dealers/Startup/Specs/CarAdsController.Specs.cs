@@ -1,8 +1,8 @@
 ﻿namespace CarRentalSystem.Startup.Specs
 {
     using System.Linq;
-    using Application.Features.CarAds.Queries.Search;
-    using Domain.Models.Dealers;
+    using Application.Dealerships.CarAds.Queries.Search;
+    using Domain.Dealerships.Models.Dealers;
     using FluentAssertions;
     using MyTested.AspNetCore.Mvc;
     using Web.Features;

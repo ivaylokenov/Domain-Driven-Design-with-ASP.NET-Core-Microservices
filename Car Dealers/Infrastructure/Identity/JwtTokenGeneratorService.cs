@@ -5,6 +5,7 @@
     using System.Security.Claims;
     using System.Text;
     using Application;
+    using Application.Common;
     using Microsoft.Extensions.Options;
     using Microsoft.IdentityModel.Tokens;
 

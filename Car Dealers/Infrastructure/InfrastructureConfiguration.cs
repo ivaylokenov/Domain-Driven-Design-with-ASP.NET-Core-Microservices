@@ -1,9 +1,13 @@
 ﻿namespace CarRentalSystem.Infrastructure
 {
     using System.Text;
-    using Application;
-    using Application.Contracts;
-    using Application.Features.Identity;
+    using Application.Common;
+    using Application.Common.Contracts;
+    using Application.Identity;
+    using Common;
+    using Common.Events;
+    using Common.Persistence;
+    using Dealership;
     using Identity;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Identity;
@@ -11,7 +15,7 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.IdentityModel.Tokens;
-    using Persistence;
+    using Statistics;
 
     public static class InfrastructureConfiguration
     {
@@ -21,7 +25,8 @@
             => services
                 .AddDatabase(configuration)
                 .AddRepositories()
-                .AddIdentity(configuration);
+                .AddIdentity(configuration)
+                .AddTransient<IEventDispatcher, EventDispatcher>();
 
         private static IServiceCollection AddDatabase(
             this IServiceCollection services,
@@ -31,9 +36,10 @@
                     .UseSqlServer(
                         configuration.GetConnectionString("DefaultConnection"),
                         sqlServer => sqlServer
-                            .MigrationsAssembly(typeof(CarRentalDbContext)
-                                .Assembly.FullName)))
-                .AddTransient<IInitializer, CarRentalDbInitializer>();
+                            .MigrationsAssembly(typeof(CarRentalDbContext).Assembly.FullName)))
+                .AddScoped<IDealershipDbContext>(provider => provider.GetService<CarRentalDbContext>())
+                .AddScoped<IStatisticsDbContext>(provider => provider.GetService<CarRentalDbContext>())
+                .AddTransient<IInitializer, DatabaseInitializer>();
 
         internal static IServiceCollection AddRepositories(this IServiceCollection services)
             => services

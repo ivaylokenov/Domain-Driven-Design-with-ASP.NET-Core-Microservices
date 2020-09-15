@@ -2,8 +2,11 @@
 {
     using System;
     using System.Reflection;
-    using Application.Features.CarAds;
+    using Application.Dealerships.CarAds;
     using AutoMapper;
+    using Common.Persistence;
+    using Dealership;
+    using FakeItEasy;
     using FluentAssertions;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
@@ -18,7 +21,8 @@
             // Arrange
             var serviceCollection = new ServiceCollection()
                 .AddDbContext<CarRentalDbContext>(opts => opts
-                    .UseInMemoryDatabase(Guid.NewGuid().ToString()));
+                    .UseInMemoryDatabase(Guid.NewGuid().ToString()))
+                .AddTransient(_ => A.Fake<IDealershipDbContext>());
 
             // Act
             var services = serviceCollection

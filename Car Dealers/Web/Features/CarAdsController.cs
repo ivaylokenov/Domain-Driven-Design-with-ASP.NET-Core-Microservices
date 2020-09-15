@@ -2,15 +2,15 @@
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using Application.Features;
-    using Application.Features.CarAds.Commands.ChangeAvailability;
-    using Application.Features.CarAds.Commands.Create;
-    using Application.Features.CarAds.Commands.Delete;
-    using Application.Features.CarAds.Commands.Edit;
-    using Application.Features.CarAds.Queries.Categories;
-    using Application.Features.CarAds.Queries.Details;
-    using Application.Features.CarAds.Queries.Mine;
-    using Application.Features.CarAds.Queries.Search;
+    using Application.Common;
+    using Application.Dealerships.CarAds.Commands.ChangeAvailability;
+    using Application.Dealerships.CarAds.Commands.Create;
+    using Application.Dealerships.CarAds.Commands.Delete;
+    using Application.Dealerships.CarAds.Commands.Edit;
+    using Application.Dealerships.CarAds.Queries.Categories;
+    using Application.Dealerships.CarAds.Queries.Details;
+    using Application.Dealerships.CarAds.Queries.Mine;
+    using Application.Dealerships.CarAds.Queries.Search;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
