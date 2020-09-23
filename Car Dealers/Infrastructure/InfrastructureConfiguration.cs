@@ -8,6 +8,7 @@
     using Common.Events;
     using Common.Persistence;
     using Dealership;
+    using Domain.Common;
     using Identity;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Identity;
@@ -46,7 +47,7 @@
                 .Scan(scan => scan
                     .FromCallingAssembly()
                     .AddClasses(classes => classes
-                        .AssignableTo(typeof(IRepository<>)))
+                        .AssignableTo(typeof(IDomainRepository<>)))
                     .AsMatchingInterface()
                     .WithTransientLifetime());
 
