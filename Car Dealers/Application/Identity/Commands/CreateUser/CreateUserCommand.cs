@@ -17,12 +17,12 @@
         {
             private readonly IIdentity identity;
             private readonly IDealerFactory dealerFactory;
-            private readonly IDealerRepository dealerRepository;
+            private readonly IDealerQueryRepository dealerRepository;
 
             public CreateUserCommandHandler(
                 IIdentity identity, 
                 IDealerFactory dealerFactory, 
-                IDealerRepository dealerRepository)
+                IDealerQueryRepository dealerRepository)
             {
                 this.identity = identity;
                 this.dealerFactory = dealerFactory;

@@ -1,5 +1,6 @@
 ﻿namespace CarRentalSystem.Infrastructure.Common.Persistence
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
     using System.Threading;
@@ -20,7 +21,7 @@
         IStatisticsDbContext
     {
         private readonly IEventDispatcher eventDispatcher;
-        private bool eventsDispatched;
+        private readonly Stack<object> savesChangesTracker;
 
         public CarRentalDbContext(
             DbContextOptions<CarRentalDbContext> options,
@@ -29,7 +30,7 @@
         {
             this.eventDispatcher = eventDispatcher;
 
-            this.eventsDispatched = false;
+            this.savesChangesTracker = new Stack<object>();
         }
 
         public DbSet<CarAd> CarAds { get; set; } = default!;
@@ -46,34 +47,34 @@
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
-            var entriesModified = 0;
+            this.savesChangesTracker.Push(new object());
 
-            if (!this.eventsDispatched)
+            var entities = this.ChangeTracker
+                .Entries<IEntity>()
+                .Select(e => e.Entity)
+                .Where(e => e.Events.Any())
+                .ToArray();
+
+            foreach (var entity in entities)
             {
-                var entities = this.ChangeTracker
-                    .Entries<IEntity>()
-                    .Select(e => e.Entity)
-                    .Where(e => e.Events.Any())
-                    .ToArray();
+                var events = entity.Events.ToArray();
 
-                foreach (var entity in entities)
+                entity.ClearEvents();
+
+                foreach (var domainEvent in events)
                 {
-                    var events = entity.Events.ToArray();
-
-                    entity.ClearEvents();
-
-                    foreach (var domainEvent in events)
-                    {
-                        await this.eventDispatcher.Dispatch(domainEvent);
-                    }
+                    await this.eventDispatcher.Dispatch(domainEvent);
                 }
-
-                this.eventsDispatched = true;
-
-                entriesModified = await base.SaveChangesAsync(cancellationToken);
             }
 
-            return entriesModified;
+            this.savesChangesTracker.Pop();
+
+            if (!this.savesChangesTracker.Any())
+            {
+                return await base.SaveChangesAsync(cancellationToken);
+            }
+
+            return 0;
         }
 
         protected override void OnModelCreating(ModelBuilder builder)

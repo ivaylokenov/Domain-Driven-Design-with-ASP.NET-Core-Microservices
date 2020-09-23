@@ -15,11 +15,11 @@
         public class EditDealerCommandHandler : IRequestHandler<EditDealerCommand, Result>
         {
             private readonly ICurrentUser currentUser;
-            private readonly IDealerRepository dealerRepository;
+            private readonly IDealerQueryRepository dealerRepository;
 
             public EditDealerCommandHandler(
                 ICurrentUser currentUser,
-                IDealerRepository dealerRepository)
+                IDealerQueryRepository dealerRepository)
             {
                 this.currentUser = currentUser;
                 this.dealerRepository = dealerRepository;

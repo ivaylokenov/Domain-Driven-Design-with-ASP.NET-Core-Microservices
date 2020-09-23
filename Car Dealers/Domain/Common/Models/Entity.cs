@@ -17,7 +17,7 @@
 
         public void ClearEvents() => this.events.Clear();
 
-        protected void AddEvent(IDomainEvent domainEvent)
+        protected void RaiseEvent(IDomainEvent domainEvent)
             => this.events.Add(domainEvent);
 
         public override bool Equals(object? obj)

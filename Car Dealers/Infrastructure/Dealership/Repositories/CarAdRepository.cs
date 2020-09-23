@@ -16,7 +16,7 @@
     using Domain.Dealerships.Models.Dealers;
     using Microsoft.EntityFrameworkCore;
 
-    internal class CarAdRepository : DataRepository<IDealershipDbContext, CarAd>, ICarAdRepository
+    internal class CarAdRepository : DataRepository<IDealershipDbContext, CarAd>, ICarAdQueryRepository
     {
         private readonly IMapper mapper;
 

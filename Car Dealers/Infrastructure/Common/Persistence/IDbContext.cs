@@ -5,7 +5,7 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-    public interface IDbContext
+    internal interface IDbContext
     {
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
 

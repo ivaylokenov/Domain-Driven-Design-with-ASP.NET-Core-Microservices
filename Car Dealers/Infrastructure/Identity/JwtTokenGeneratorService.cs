@@ -4,12 +4,11 @@
     using System.IdentityModel.Tokens.Jwt;
     using System.Security.Claims;
     using System.Text;
-    using Application;
     using Application.Common;
     using Microsoft.Extensions.Options;
     using Microsoft.IdentityModel.Tokens;
 
-    public class JwtTokenGeneratorService : IJwtTokenGenerator
+    internal class JwtTokenGeneratorService : IJwtTokenGenerator
     {
         private readonly ApplicationSettings applicationSettings;
 

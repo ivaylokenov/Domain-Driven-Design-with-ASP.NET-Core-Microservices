@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarRentalSystem.Web", "Web\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarRentalSystem.Infrastructure", "Infrastructure\CarRentalSystem.Infrastructure.csproj", "{5EF5DDEC-640E-4199-904C-AE6CBB6ED6DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRentalSystem.Application", "Application\CarRentalSystem.Application.csproj", "{59C15874-BF77-4BC2-8739-E39FCB27337B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarRentalSystem.Application", "Application\CarRentalSystem.Application.csproj", "{59C15874-BF77-4BC2-8739-E39FCB27337B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

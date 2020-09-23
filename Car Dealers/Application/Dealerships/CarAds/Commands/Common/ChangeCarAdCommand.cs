@@ -10,7 +10,7 @@
     {
         public static async Task<Result> DealerHasCarAd(
             this ICurrentUser currentUser,
-            IDealerRepository dealerRepository,
+            IDealerQueryRepository dealerRepository,
             int carAdId,
             CancellationToken cancellationToken)
         {

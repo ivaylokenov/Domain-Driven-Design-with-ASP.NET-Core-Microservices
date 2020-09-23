@@ -11,20 +11,8 @@
     using Queries.Common;
     using Queries.Details;
 
-    public interface ICarAdRepository : IRepository<CarAd>
+    public interface ICarAdQueryRepository : IQueryRepository<CarAd>
     {
-        Task<CarAd> Find(int id, CancellationToken cancellationToken = default);
-
-        Task<bool> Delete(int id, CancellationToken cancellationToken = default);
-
-        Task<Category> GetCategory(
-            int categoryId,
-            CancellationToken cancellationToken = default);
-
-        Task<Manufacturer> GetManufacturer(
-            string manufacturer,
-            CancellationToken cancellationToken = default);
-
         Task<IEnumerable<TOutputModel>> GetCarAdListings<TOutputModel>(
             Specification<CarAd> carAdSpecification,
             Specification<Dealer> dealerSpecification,

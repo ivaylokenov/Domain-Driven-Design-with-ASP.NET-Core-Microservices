@@ -12,7 +12,7 @@
     public class CarAdCommandValidator<TCommand> : AbstractValidator<CarAdCommand<TCommand>> 
         where TCommand : EntityCommand<int>
     {
-        public CarAdCommandValidator(ICarAdRepository carAdRepository)
+        public CarAdCommandValidator(ICarAdQueryRepository carAdRepository)
         {
             this.RuleFor(c => c.Manufacturer)
                 .MinimumLength(MinNameLength)

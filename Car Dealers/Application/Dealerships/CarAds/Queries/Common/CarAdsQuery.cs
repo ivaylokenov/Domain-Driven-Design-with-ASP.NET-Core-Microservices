@@ -32,9 +32,9 @@
 
         public abstract class CarAdsQueryHandler
         {
-            private readonly ICarAdRepository carAdRepository;
+            private readonly ICarAdQueryRepository carAdRepository;
 
-            protected CarAdsQueryHandler(ICarAdRepository carAdRepository)
+            protected CarAdsQueryHandler(ICarAdQueryRepository carAdRepository)
                 => this.carAdRepository = carAdRepository;
 
             protected async Task<IEnumerable<TOutputModel>> GetCarAdListings<TOutputModel>(

@@ -8,6 +8,7 @@
     using Domain.Common.Models;
     using Domain.Dealerships.Factories.CarAds;
     using Domain.Dealerships.Models.CarAds;
+    using Domain.Dealerships.Repositories;
     using MediatR;
 
     public class CreateCarAdCommand : CarAdCommand<CreateCarAdCommand>, IRequest<CreateCarAdOutputModel>
@@ -15,14 +16,14 @@
         public class CreateCarAdCommandHandler : IRequestHandler<CreateCarAdCommand, CreateCarAdOutputModel>
         {
             private readonly ICurrentUser currentUser;
-            private readonly IDealerRepository dealerRepository;
-            private readonly ICarAdRepository carAdRepository;
+            private readonly IDealerDomainRepository dealerRepository;
+            private readonly ICarAdDomainRepository carAdRepository;
             private readonly ICarAdFactory carAdFactory;
 
             public CreateCarAdCommandHandler(
                 ICurrentUser currentUser, 
-                IDealerRepository dealerRepository, 
-                ICarAdRepository carAdRepository, 
+                IDealerDomainRepository dealerRepository, 
+                ICarAdDomainRepository carAdRepository, 
                 ICarAdFactory carAdFactory)
             {
                 this.currentUser = currentUser;

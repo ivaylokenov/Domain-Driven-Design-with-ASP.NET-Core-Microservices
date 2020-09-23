@@ -10,7 +10,7 @@
     using Domain.Common;
     using Microsoft.Extensions.DependencyInjection;
 
-    public class EventDispatcher : IEventDispatcher
+    internal class EventDispatcher : IEventDispatcher
     {
         private static readonly ConcurrentDictionary<Type, IEnumerable<Func<object, Task>>> HandlersCache
             = new ConcurrentDictionary<Type, IEnumerable<Func<object, Task>>>();

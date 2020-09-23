@@ -56,7 +56,7 @@
         {
             this.carAds.Add(carAd);
 
-            this.AddEvent(new CarAdAddedEvent());
+            this.RaiseEvent(new CarAdAddedEvent());
         }
 
         private void Validate(string name)

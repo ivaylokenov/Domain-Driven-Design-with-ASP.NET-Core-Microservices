@@ -6,7 +6,7 @@
     using Application.Common.Contracts;
     using Domain.Common;
 
-    internal abstract class DataRepository<TDbContext, TEntity> : IRepository<TEntity>
+    internal abstract class DataRepository<TDbContext, TEntity> : IDomainRepository<TEntity>
         where TDbContext : IDbContext
         where TEntity : class, IAggregateRoot
     {

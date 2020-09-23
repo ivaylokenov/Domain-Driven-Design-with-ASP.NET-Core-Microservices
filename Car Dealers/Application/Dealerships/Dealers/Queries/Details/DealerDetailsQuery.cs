@@ -10,9 +10,9 @@
 
         public class DealerDetailsQueryHandler : IRequestHandler<DealerDetailsQuery, DealerDetailsOutputModel>
         {
-            private readonly IDealerRepository dealerRepository;
+            private readonly IDealerQueryRepository dealerRepository;
 
-            public DealerDetailsQueryHandler(IDealerRepository dealerRepository) 
+            public DealerDetailsQueryHandler(IDealerQueryRepository dealerRepository) 
                 => this.dealerRepository = dealerRepository;
 
             public async Task<DealerDetailsOutputModel> Handle(

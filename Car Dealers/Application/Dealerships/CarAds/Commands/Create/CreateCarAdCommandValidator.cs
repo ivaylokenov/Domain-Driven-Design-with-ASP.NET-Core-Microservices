@@ -5,7 +5,7 @@
 
     public class CreateCarAdCommandValidator : AbstractValidator<CreateCarAdCommand>
     {
-        public CreateCarAdCommandValidator(ICarAdRepository carAdRepository) 
+        public CreateCarAdCommandValidator(ICarAdQueryRepository carAdRepository) 
             => this.Include(new CarAdCommandValidator<CreateCarAdCommand>(carAdRepository));
     }
 }

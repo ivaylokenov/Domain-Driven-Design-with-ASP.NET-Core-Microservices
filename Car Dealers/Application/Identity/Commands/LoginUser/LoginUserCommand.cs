@@ -11,11 +11,11 @@
         public class LoginUserCommandHandler : IRequestHandler<LoginUserCommand, Result<LoginOutputModel>>
         {
             private readonly IIdentity identity;
-            private readonly IDealerRepository dealerRepository;
+            private readonly IDealerQueryRepository dealerRepository;
 
             public LoginUserCommandHandler(
                 IIdentity identity, 
-                IDealerRepository dealerRepository)
+                IDealerQueryRepository dealerRepository)
             {
                 this.identity = identity;
                 this.dealerRepository = dealerRepository;

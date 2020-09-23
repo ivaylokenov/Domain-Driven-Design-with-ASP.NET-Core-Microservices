@@ -11,7 +11,7 @@
             SearchCarAdsQuery, 
             SearchCarAdsOutputModel>
         {
-            public SearchCarAdsQueryHandler(ICarAdRepository carAdRepository)
+            public SearchCarAdsQueryHandler(ICarAdQueryRepository carAdRepository)
                 : base(carAdRepository)
             {
             }

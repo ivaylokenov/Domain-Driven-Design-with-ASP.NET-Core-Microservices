@@ -6,7 +6,7 @@
     using Identity;
     using Microsoft.EntityFrameworkCore;
 
-    public interface IDealershipDbContext : IDbContext
+    internal interface IDealershipDbContext : IDbContext
     {
         DbSet<CarAd> CarAds { get; }
 

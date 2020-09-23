@@ -13,12 +13,12 @@
             MineCarAdsQuery,
             MineCarAdsOutputModel>
         {
-            private readonly IDealerRepository dealerRepository;
+            private readonly IDealerQueryRepository dealerRepository;
             private readonly ICurrentUser currentUser;
 
             public MineCarAdsQueryHandler(
-                ICarAdRepository carAdRepository, 
-                IDealerRepository dealerRepository,
+                ICarAdQueryRepository carAdRepository, 
+                IDealerQueryRepository dealerRepository,
                 ICurrentUser currentUser)
                 : base(carAdRepository)
             {

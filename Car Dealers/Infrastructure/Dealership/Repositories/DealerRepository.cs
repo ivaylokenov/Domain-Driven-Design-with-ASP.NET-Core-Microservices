@@ -15,7 +15,7 @@
     using Identity;
     using Microsoft.EntityFrameworkCore;
 
-    internal class DealerRepository : DataRepository<IDealershipDbContext, Dealer>, IDealerRepository
+    internal class DealerRepository : DataRepository<IDealershipDbContext, Dealer>, IDealerQueryRepository
     {
         private readonly IMapper mapper;
 

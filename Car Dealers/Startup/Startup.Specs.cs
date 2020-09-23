@@ -33,7 +33,7 @@
 
             provider.GetRequiredService<ICarAdFactory>();
             provider.GetRequiredService<IMediator>();
-            provider.GetRequiredService<ICarAdRepository>();
+            provider.GetRequiredService<ICarAdQueryRepository>();
             provider.GetRequiredService<IControllerFactory>();
         }
     }

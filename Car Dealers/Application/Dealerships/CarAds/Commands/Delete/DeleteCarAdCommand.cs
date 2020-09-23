@@ -13,13 +13,13 @@
         public class DeleteCarAdCommandHandler : IRequestHandler<DeleteCarAdCommand, Result>
         {
             private readonly ICurrentUser currentUser;
-            private readonly ICarAdRepository carAdRepository;
-            private readonly IDealerRepository dealerRepository;
+            private readonly ICarAdQueryRepository carAdRepository;
+            private readonly IDealerQueryRepository dealerRepository;
 
             public DeleteCarAdCommandHandler(
                 ICurrentUser currentUser, 
-                ICarAdRepository carAdRepository, 
-                IDealerRepository dealerRepository)
+                ICarAdQueryRepository carAdRepository, 
+                IDealerQueryRepository dealerRepository)
             {
                 this.currentUser = currentUser;
                 this.carAdRepository = carAdRepository;
