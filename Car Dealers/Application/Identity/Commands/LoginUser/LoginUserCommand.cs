@@ -3,7 +3,7 @@
     using System.Threading;
     using System.Threading.Tasks;
     using Common;
-    using Dealerships.Dealers;
+    using Domain.Dealerships.Repositories;
     using MediatR;
 
     public class LoginUserCommand : UserInputModel, IRequest<Result<LoginOutputModel>>
@@ -11,11 +11,11 @@
         public class LoginUserCommandHandler : IRequestHandler<LoginUserCommand, Result<LoginOutputModel>>
         {
             private readonly IIdentity identity;
-            private readonly IDealerQueryRepository dealerRepository;
+            private readonly IDealerDomainRepository dealerRepository;
 
             public LoginUserCommandHandler(
-                IIdentity identity, 
-                IDealerQueryRepository dealerRepository)
+                IIdentity identity,
+                IDealerDomainRepository dealerRepository)
             {
                 this.identity = identity;
                 this.dealerRepository = dealerRepository;

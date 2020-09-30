@@ -2,9 +2,10 @@
 {
     using System.Threading;
     using System.Threading.Tasks;
+    using Common;
     using Models.Dealers;
 
-    public interface IDealerDomainRepository
+    public interface IDealerDomainRepository : IDomainRepository<Dealer>
     {
         Task<Dealer> FindByUser(string userId, CancellationToken cancellationToken = default);
 

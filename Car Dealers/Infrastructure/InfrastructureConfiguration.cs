@@ -47,8 +47,9 @@
                 .Scan(scan => scan
                     .FromCallingAssembly()
                     .AddClasses(classes => classes
-                        .AssignableTo(typeof(IDomainRepository<>)))
-                    .AsMatchingInterface()
+                        .AssignableTo(typeof(IDomainRepository<>))
+                        .AssignableTo(typeof(IQueryRepository<>)))
+                    .AsImplementedInterfaces()
                     .WithTransientLifetime());
 
         private static IServiceCollection AddIdentity(

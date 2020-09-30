@@ -3,12 +3,13 @@
     using System.Threading.Tasks;
     using Common;
     using Domain.Dealerships.Events.Dealers;
+    using Domain.Statistics.Repositories;
 
     public class CarAdAddedEventHandler : IEventHandler<CarAdAddedEvent>
     {
-        private readonly IStatisticsRepository statistics;
+        private readonly IStatisticsDomainRepository statistics;
 
-        public CarAdAddedEventHandler(IStatisticsRepository statistics) 
+        public CarAdAddedEventHandler(IStatisticsDomainRepository statistics) 
             => this.statistics = statistics;
 
         public Task Handle(CarAdAddedEvent domainEvent)

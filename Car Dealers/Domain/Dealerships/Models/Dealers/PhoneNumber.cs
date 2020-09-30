@@ -1,7 +1,6 @@
 ﻿namespace CarRentalSystem.Domain.Dealerships.Models.Dealers
 {
     using System.Text.RegularExpressions;
-    using Common;
     using Common.Models;
     using Exceptions;
     using static ModelConstants.PhoneNumber;

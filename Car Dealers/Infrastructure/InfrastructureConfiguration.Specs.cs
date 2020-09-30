@@ -7,11 +7,9 @@
     using Common.Events;
     using Common.Persistence;
     using Dealership;
-    using FakeItEasy;
     using FluentAssertions;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
-    using Persistence;
     using Xunit;
 
     public class InfrastructureConfigurationSpecs

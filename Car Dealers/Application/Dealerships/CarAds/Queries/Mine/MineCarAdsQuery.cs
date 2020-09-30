@@ -4,7 +4,7 @@
     using System.Threading.Tasks;
     using Application.Common.Contracts;
     using Common;
-    using Dealers;
+    using Domain.Dealerships.Repositories;
     using MediatR;
 
     public class MineCarAdsQuery : CarAdsQuery, IRequest<MineCarAdsOutputModel>
@@ -13,12 +13,12 @@
             MineCarAdsQuery,
             MineCarAdsOutputModel>
         {
-            private readonly IDealerQueryRepository dealerRepository;
+            private readonly IDealerDomainRepository dealerRepository;
             private readonly ICurrentUser currentUser;
 
             public MineCarAdsQueryHandler(
                 ICarAdQueryRepository carAdRepository, 
-                IDealerQueryRepository dealerRepository,
+                IDealerDomainRepository dealerRepository,
                 ICurrentUser currentUser)
                 : base(carAdRepository)
             {

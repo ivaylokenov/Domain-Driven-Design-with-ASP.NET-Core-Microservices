@@ -3,8 +3,8 @@
     using System.Threading;
     using System.Threading.Tasks;
     using Common;
-    using Dealerships.Dealers;
     using Domain.Dealerships.Factories.Dealers;
+    using Domain.Dealerships.Repositories;
     using MediatR;
 
     public class CreateUserCommand : UserInputModel, IRequest<Result>
@@ -17,12 +17,12 @@
         {
             private readonly IIdentity identity;
             private readonly IDealerFactory dealerFactory;
-            private readonly IDealerQueryRepository dealerRepository;
+            private readonly IDealerDomainRepository dealerRepository;
 
             public CreateUserCommandHandler(
                 IIdentity identity, 
                 IDealerFactory dealerFactory, 
-                IDealerQueryRepository dealerRepository)
+                IDealerDomainRepository dealerRepository)
             {
                 this.identity = identity;
                 this.dealerFactory = dealerFactory;

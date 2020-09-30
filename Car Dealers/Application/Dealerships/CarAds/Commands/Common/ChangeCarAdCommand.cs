@@ -4,13 +4,13 @@
     using System.Threading.Tasks;
     using Application.Common;
     using Application.Common.Contracts;
-    using Dealers;
+    using Domain.Dealerships.Repositories;
 
     internal static class ChangeCarAdCommandExtensions
     {
         public static async Task<Result> DealerHasCarAd(
             this ICurrentUser currentUser,
-            IDealerQueryRepository dealerRepository,
+            IDealerDomainRepository dealerRepository,
             int carAdId,
             CancellationToken cancellationToken)
         {

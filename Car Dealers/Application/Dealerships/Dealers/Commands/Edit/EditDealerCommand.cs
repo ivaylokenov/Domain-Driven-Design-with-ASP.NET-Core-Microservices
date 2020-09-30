@@ -4,6 +4,7 @@
     using System.Threading.Tasks;
     using Common;
     using Common.Contracts;
+    using Domain.Dealerships.Repositories;
     using MediatR;
 
     public class EditDealerCommand : EntityCommand<int>, IRequest<Result>
@@ -15,11 +16,11 @@
         public class EditDealerCommandHandler : IRequestHandler<EditDealerCommand, Result>
         {
             private readonly ICurrentUser currentUser;
-            private readonly IDealerQueryRepository dealerRepository;
+            private readonly IDealerDomainRepository dealerRepository;
 
             public EditDealerCommandHandler(
                 ICurrentUser currentUser,
-                IDealerQueryRepository dealerRepository)
+                IDealerDomainRepository dealerRepository)
             {
                 this.currentUser = currentUser;
                 this.dealerRepository = dealerRepository;

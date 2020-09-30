@@ -5,7 +5,6 @@
     using Application.Common;
     using Application.Common.Contracts;
     using Common;
-    using Dealers;
     using Domain.Common.Models;
     using Domain.Dealerships.Models.CarAds;
     using Domain.Dealerships.Repositories;

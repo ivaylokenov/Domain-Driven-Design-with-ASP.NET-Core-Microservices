@@ -10,9 +10,9 @@
 
         public class GetCarAdViewsQueryHandler : IRequestHandler<GetCarAdViewsQuery, int>
         {
-            private readonly IStatisticsRepository statistics;
+            private readonly IStatisticsQueryRepository statistics;
 
-            public GetCarAdViewsQueryHandler(IStatisticsRepository statistics) 
+            public GetCarAdViewsQueryHandler(IStatisticsQueryRepository statistics) 
                 => this.statistics = statistics;
 
             public Task<int> Handle(

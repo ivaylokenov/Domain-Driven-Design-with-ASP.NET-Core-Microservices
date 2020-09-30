@@ -3,7 +3,6 @@
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
-    using Application.Common.Contracts;
     using Domain.Common;
 
     internal abstract class DataRepository<TDbContext, TEntity> : IDomainRepository<TEntity>

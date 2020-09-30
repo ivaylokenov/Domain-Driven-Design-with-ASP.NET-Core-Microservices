@@ -4,6 +4,7 @@
     using Application.Common;
     using Domain.Common.Models;
     using Domain.Dealerships.Models.CarAds;
+    using Domain.Dealerships.Repositories;
     using FluentValidation;
     using static Domain.Dealerships.Models.ModelConstants.Common;
     using static Domain.Dealerships.Models.ModelConstants.CarAd;
@@ -12,7 +13,7 @@
     public class CarAdCommandValidator<TCommand> : AbstractValidator<CarAdCommand<TCommand>> 
         where TCommand : EntityCommand<int>
     {
-        public CarAdCommandValidator(ICarAdQueryRepository carAdRepository)
+        public CarAdCommandValidator(ICarAdDomainRepository carAdRepository)
         {
             this.RuleFor(c => c.Manufacturer)
                 .MinimumLength(MinNameLength)
