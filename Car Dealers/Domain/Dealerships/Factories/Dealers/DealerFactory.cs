@@ -20,11 +20,5 @@
         }
 
         public Dealer Build() => new Dealer(this.dealerName, this.dealerPhoneNumber);
-
-        public Dealer Build(string name, string phoneNumber)
-            => this
-                .WithName(name)
-                .WithPhoneNumber(phoneNumber)
-                .Build();
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace CarRentalSystem.Infrastructure.Persistence.Migrations
+﻿namespace CarRentalSystem.Infrastructure.Common.Persistence.Migrations
 {
     using Microsoft.EntityFrameworkCore.Migrations;
 

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace CarRentalSystem.Infrastructure.Persistence.Migrations
+namespace CarRentalSystem.Infrastructure.Common.Persistence.Migrations
 {
     using Common.Persistence;
 

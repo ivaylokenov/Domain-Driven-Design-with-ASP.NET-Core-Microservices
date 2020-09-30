@@ -12,17 +12,18 @@
 
     internal class EventDispatcher : IEventDispatcher
     {
-        private static readonly ConcurrentDictionary<Type, IEnumerable<Func<object, Task>>> HandlersCache
-            = new ConcurrentDictionary<Type, IEnumerable<Func<object, Task>>>();
+        private static readonly ConcurrentDictionary<Type, Type> HandlerTypesCache 
+            = new ConcurrentDictionary<Type, Type>();
+
+        private static readonly ConcurrentDictionary<Type, Func<object, object, Task>> HandlersCache
+            = new ConcurrentDictionary<Type, Func<object, object, Task>>();
 
         private static readonly Type HandlerType = typeof(IEventHandler<>);
 
         private static readonly MethodInfo MakeDelegateMethod = typeof(EventDispatcher)
             .GetMethod(nameof(MakeDelegate), BindingFlags.Static | BindingFlags.NonPublic)!;
 
-        private static readonly Type OpenGenericFuncType = typeof(Func<,>);
-
-        private static readonly Type TaskType = typeof(Task);
+        private static readonly Type EventHandlerFuncType = typeof(Func<Func<object, object, Task>>);
 
         private readonly IServiceProvider serviceProvider;
 
@@ -31,32 +32,36 @@
 
         public async Task Dispatch(IDomainEvent domainEvent)
         {
-            var eventHandlers = HandlersCache.GetOrAdd(domainEvent.GetType(), eventType =>
-            {
-                var eventHandlerType = HandlerType.MakeGenericType(eventType);
+            var eventType = domainEvent.GetType();
 
-                var makeDelegate = MakeDelegateMethod.MakeGenericMethod(eventType);
+            var handlerTypes = HandlerTypesCache.GetOrAdd(
+                eventType,
+                type => HandlerType.MakeGenericType(type));
 
-                var funcType = OpenGenericFuncType.MakeGenericType(eventType, TaskType);
-
-                return this.serviceProvider
-                    .GetServices(eventHandlerType)
-                    .Select(handler => handler
-                        .GetType()
-                        .GetMethod("Handle")!
-                        .CreateDelegate(funcType, handler))
-                    .Select(handlerDelegateConcrete => (Func<object, Task>)makeDelegate
-                        .Invoke(null, new object[] { handlerDelegateConcrete })!)
-                    .ToList();
-            });
+            var eventHandlers = this.serviceProvider.GetServices(handlerTypes);
 
             foreach (var eventHandler in eventHandlers)
             {
-                await eventHandler(domainEvent);
+                var handlerServiceType = eventHandler.GetType();
+
+                var eventHandlerDelegate = HandlersCache.GetOrAdd(handlerServiceType, type =>
+                {
+                    var makeDelegate = MakeDelegateMethod
+                        .MakeGenericMethod(eventType, type);
+
+                    return ((Func<Func<object, object, Task>>)makeDelegate
+                        .CreateDelegate(EventHandlerFuncType))
+                        .Invoke();
+                });
+
+                await eventHandlerDelegate(domainEvent, eventHandler);
             }
         }
 
-        private static Func<object, Task> MakeDelegate<T>(Func<T, Task> action)
-            => value => action((T)value);
+        private static Func<object, object, Task> MakeDelegate<TEvent, TEventHandler>()
+            where TEvent : IDomainEvent
+            where TEventHandler : IEventHandler<TEvent>
+            => (domainEvent, eventHandler) => 
+                ((TEventHandler)eventHandler).Handle((TEvent)domainEvent);
     }
 }
