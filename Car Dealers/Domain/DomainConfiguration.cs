@@ -2,13 +2,15 @@
 {
     using Common;
     using Microsoft.Extensions.DependencyInjection;
+    using Renting.Services;
 
     public static class DomainConfiguration
     {
         public static IServiceCollection AddDomain(this IServiceCollection services)
             => services
                 .AddFactories()
-                .AddInitialData();
+                .AddInitialData()
+                .AddTransient<IRentingScheduleService, RentingScheduleService>();
 
         private static IServiceCollection AddFactories(this IServiceCollection services)
             => services
