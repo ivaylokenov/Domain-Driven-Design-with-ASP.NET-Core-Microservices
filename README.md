@@ -1,6 +1,6 @@
 # Domain-Driven Design with ASP.NET Core Microservices
 
-This repository contains the demo source code from my [SoftUni course](https://softuni.bg/trainings/3103/domain-driven-design-with-asp-dot-net-core-microservices-august-2020) about Domain-Driven Design with ASP.NET Core microservices architecture.
+This repository contains the demo source code from my [SoftUni course](https://softuni.bg/trainings/3535/domain-driven-design-with-asp-dot-net-core-microservices-october-2021) about Domain-Driven Design with ASP.NET Core microservices architecture.
 
 If you'd like to support me and my projects, please consider:
 
@@ -17,4 +17,4 @@ If you'd like to support me and my projects, please consider:
 
 Additional resources:
 
-- My YouTube channel is a great place to learn advanced C# concepts. Make sure you subscribe and turn on the bell notifications: https://www.youtube.com/MyTestedASPNETTV
+- My YouTube channel is a great place to learn advanced C# concepts. Make sure you subscribe and turn on the bell notifications: https://www.youtube.com/c/CodeItUpWithIvo
